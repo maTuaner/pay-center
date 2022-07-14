@@ -1,10 +1,12 @@
 spring:
   cloud:
     nacos:
+      server-addr: 
+      username: 
+      password: 
       config:
-        server-addr:
-        namespace:
-        username:
-        password:
+        namespace: 
+      discovery:
+        namespace: 
 server:
-  port: 18080
+  port: 
