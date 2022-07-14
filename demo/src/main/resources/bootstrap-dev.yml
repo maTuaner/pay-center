@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr:
+        namespace:
+        username:
+        password:
+server:
+  port: 18080

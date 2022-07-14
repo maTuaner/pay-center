@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: demo
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+server:
+  port: 18080
