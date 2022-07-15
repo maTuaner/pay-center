@@ -21,6 +21,7 @@
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <mysql-connector.version>8.0.29</mysql-connector.version>
+        <mybatis-dynamic-sql.version>1.4.0</mybatis-dynamic-sql.version>
         <mybatis.version>2.2.2</mybatis.version>
         <druid.version>1.2.11</druid.version>
     </properties>
@@ -68,6 +69,11 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+            <version>${mybatis-dynamic-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
