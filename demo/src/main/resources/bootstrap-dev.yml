@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: 
+      username: 
+      password: 
+      config:
+        namespace: 
+      discovery:
+        namespace: 
+server:
+  port: 18080
