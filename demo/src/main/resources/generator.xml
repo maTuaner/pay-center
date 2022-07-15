@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <!--    <classPathEntry-->
+    <!--            location="/Users/liuch/tools/apache-maven-3.3.3/download/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar"/>-->
+    <!--    <classPathEntry location="D:\DoResources\apache-maven-3.6.3\repository\mysql\mysql-connector-java\8.0.21\mysql-connector-java-8.0.21.jar"/>-->
+
+    <!-- targetRuntime属性的可选值 -->
+    <!-- MyBatis3DynamicSql	默认值，兼容JDK8+和MyBatis 3.4.2+，不会生成XML映射文件，忽略<sqlMapGenerator>的配置项，也就是Mapper全部注解化，依赖于MyBatis Dynamic SQL类库-->
+    <!-- MyBatis3Kotlin	行为类似于MyBatis3DynamicSql，不过兼容Kotlin的代码生成-->
+    <!-- MyBatis3	提供基本的基于动态SQL的CRUD方法和XXXByExample方法，会生成XML映射文件-->
+    <!-- MyBatis3Simple	提供基本的基于动态SQL的CRUD方法，会生成XML映射文件-->
+    <!-- MyBatis3DynamicSqlV1	已经过时，不推荐使用-->
+    <context id="DB2Tables" targetRuntime="MyBatis3DynamicSql">
+        <!-- 是否使用分隔符号括住数据库关键字 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- 分隔符号的开始符号 -->
+        <property name="beginningDelimiter" value="`"/>
+        <!-- 分隔符号的结束符号 -->
+        <property name="endingDelimiter" value="`"/>
+        <!-- 文件编码,来源于java.nio.charset.Charset -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 类名和文件格式化器,见JavaFormatter和DefaultJavaFormatter -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 是否JDK8和启动其特性	 -->
+        <property name="targetJava8" value="true"/>
+        <!-- Kotlin文件编码,来源于java.nio.charset.Charset -->
+        <!--        <property name="kotlinFileEncoding" value=""/>-->
+        <!-- Kotlin类名和文件格式化器,见KotlinFormatter和DefaultKotlinFormatter -->
+        <!--        <property name="kotlinFormatter" value="DefaultKotlinFormatter"/>-->
+        <!-- XML文件格式化器,见XmlFormatter和DefaultXmlFormatter -->
+        <!--        <property name="xmlFormatter" value="DefaultXmlFormatter"/>-->
+
+        <!-- 序列化model-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 链式调用 -->
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+        <!-- 该插件将toString()方法添加到生成的模型类中 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 控制生成的实体的注释内容 -->
+        <commentGenerator>
+            <!-- 是否抑制生成注释 -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- 是否抑制在注释中添加生成的时间戳 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 配合suppressDate使用，指定输出时间戳的格式,java.util.Date#toString() -->
+            <property name="dateFormat" value=""/>
+            <!--是否输出表和列的Comment信息,如果 suppressAllComments 选项为 true，则此选项将被忽略。-->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 指定数据源的连接信息 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true&amp;zeroDateTimeBehavior=convertToNull"
+                        userId=""
+                        password="">
+            <!-- 针对mysql数据库 -->
+            <property name="useInformationSchema" value="true"/>
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+
+        <!--  用于解析和计算数据库列类型和Java类型的映射关系，该标签只包含一个type属性，用于指定org.mybatis.generator.api.JavaTypeResolver接口的实现类 -->
+        <javaTypeResolver>
+            <!-- 是否强制把所有的数字类型强制使用java.math.BigDecimal类型表示 -->
+            <property name="forceBigDecimals" value="true"/>
+            <!-- 是否支持JSR310，主要是JSR310的新日期类型(java8+的时间类型) -->
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <!-- 控制实体（Model）类的代码生成行为 -->
+        <javaModelGenerator targetPackage="com.hkuo.demo.models.bo" targetProject="src/main/java">
+            <!-- 是否生成一个带有所有字段属性的构造函数,MyBatis3Kotlin模式下忽略此属性配置 -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否允许通过Schema生成子包-->
+            <!--            <property name="enableSubPackages" value="false"/>-->
+            <!-- 生成的伴随实体类的Example类的包名 -->
+            <!--            <property name="exampleTargetPackage" value=""/>-->
+            <!-- 生成的伴随实体类的Example类文件相对于项目（根目录）的位置 -->
+            <!--            <property name="exampleTargetProject" value=""/>-->
+            <!-- 如果为true，则不会生成Setter方法，所有字段都使用final修饰，提供一个带有所有字段属性的构造函数 -->
+            <!--            <property name="immutable" value="false"/>-->
+            <!-- 为生成的实体类添加父类	 -->
+            <!--            <property name="rootClass" value="通过value指定父类的全类名即可"/>-->
+            <!-- Setter方法是否对字符串类型进行一次trim操作		 -->
+            <!--            <property name="trimStrings" value="false"/>-->
+        </javaModelGenerator>
+
+        <!-- 控制XML映射文件的代码生成行为 -->
+        <!--        <sqlMapGenerator targetPackage="test.model" targetProject="src/main/java">-->
+        <!--            <property name="enableSubPackages" value="false" />-->
+        <!--        </sqlMapGenerator>-->
+
+        <!-- 控制Mapper接口的代码生成行为 -->
+        <!-- type:Mapper接口生成策略,<context>标签的targetRuntime属性为MyBatis3DynamicSql或者MyBatis3Kotlin时此属性配置忽略,属性可选值如下 -->
+        <!-- ANNOTATEDMAPPER：Mapper接口生成的时候依赖于注解和SqlProviders（也就是纯注解实现），不会生成XML映射文件。-->
+        <!-- XMLMAPPER：Mapper接口生成接口方法，对应的实现代码生成在XML映射文件中（也就是纯映射文件实现）。-->
+        <!-- MIXEDMAPPER：Mapper接口生成的时候复杂的方法实现生成在XML映射文件中，而简单的实现通过注解和SqlProviders实现（也就是注解和映射文件混合实现）。-->
+        <javaClientGenerator targetPackage="com.hkuo.demo.mapper" targetProject="src/main/java"
+                             type="ANNOTATEDMAPPER">
+            <!-- 是否允许通过Schema生成子包,如果为true，例如包名为club.throwable，如果Schema为xyz，那么Mapper接口文件最终会生成在club.throwable.xyz目录 -->
+            <!--            <property name="enableSubPackages" value="false"/>-->
+            <!-- 为生成的Mapper接口添加父接口,通过value指定父接口的全类名即可 -->
+            <!--            <property name="rootInterface" value=""/>-->
+
+        </javaClientGenerator>
+
+        <!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+        <table tableName=''/>
+
+    </context>
+</generatorConfiguration>
