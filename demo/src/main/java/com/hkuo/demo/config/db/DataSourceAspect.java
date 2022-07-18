@@ -20,9 +20,7 @@ import java.lang.reflect.Method;
 public class DataSourceAspect {
 
     @Pointcut("@annotation(com.hkuo.demo.config.db.DataSource)")
-    public void dsPointCut() {
-
-    }
+    public void dsPointCut() {}
 
     @Around("dsPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {

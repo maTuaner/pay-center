@@ -18,7 +18,7 @@ import java.util.Map;
  * @author liuch
  */
 @Configuration
-@MapperScan(basePackages = "com.hkuo.demo.mapper")
+@MapperScan(basePackages = "${db.mybatis.mapper-scan.base-package}")
 public class MybatisConfig {
 
     @Bean
